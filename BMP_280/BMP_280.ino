@@ -15,22 +15,22 @@
 #define PIN_MISO 12
 #define PIN_MOSI 11
 #define PIN_CS   10
-Adafruit_BMP280 bmp(PIN_CS, PIN_MOSI, PIN_MISO,  PIN_SCK);
+Adafruit_BMP280 bmp(PIN_CS, PIN_MOSI, PIN_MISO,  PIN_SCK);//инициализируем сенсор, указывая пины)
 
 void setup() {
   Serial.begin(9600); // Для вывода отладочной информации в терминал
-    if(!bmp.begin()) { // Если датчик BMP280 не найден
+    if(!bmp.begin()) { // проверяем если датчик BMP280 не найден
     Serial.println("BMP280 SENSOR ERROR"); // Выводим сообщение об ошибке
     while(1); // Переходим в бесконечный цикл
   }
-}
-
-/*bmp.setSampling(Adafruit_BMP280::MODE_NORMAL, // Режим работы
+//функция снизу нужна для настройки сенсора, чтобы настраивать вместо переменных пишите цифры
+bmp.setSampling(Adafruit_BMP280::MODE_NORMAL, // Режим работы
                 Adafruit_BMP280::SAMPLING_X2, // Точность изм. температуры
                 Adafruit_BMP280::SAMPLING_X16, // Точность изм. давления
                 Adafruit_BMP280::FILTER_X16, // Уровень фильтрации
-                Adafruit_BMP280::STANDBY_MS_500); // Период просыпания, мСек*/
+                Adafruit_BMP280::STANDBY_MS_500); // Период просыпания, мСек
 
+}
 void loop() {
   // Выводим значение температуры
   Serial.print(F("Temperature = "));
