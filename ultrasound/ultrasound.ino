@@ -1,3 +1,6 @@
+//измеряльщик/ловушка
+
+
 #define PIN_TRIG 12
 #define PIN_ECHO 11
 
@@ -38,6 +41,7 @@ void loop() {
   // Задержка между измерениями для корректной работы скеча
   delay(250);
 }
+//тот же код но с библиотекой NewPing
 /*
 #define PIN_TRIG 12
 #define PIN_ECHO 11
