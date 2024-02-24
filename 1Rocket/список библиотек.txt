@@ -1,0 +1,17 @@
+1.VoltBroSensors
+Ссылка: https://github.com/voltbro/VoltBroSensors
+Изменения: Добавлена поддержка microWire
+
+2.mString
+Ссылка:https://github.com/GyverLibs/mString
+Изменения: Исправлен баг с конвертацией float
+
+3.microWire
+Ссылка:https://github.com/GyverLibs/microWire
+
+4.GyverOLED
+Ссылка:https://github.com/GyverLibs/GyverOLED
+Изменения: Удалены русские буквы для экономии памяти
+
+5.SdFat
+Ссылка:https://github.com/greiman/SdFat
