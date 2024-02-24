@@ -11,8 +11,7 @@
 
 
 //подключенные устройства и датчики
-Servo servo;
-GyverOLED<SSD1306_128x64, OLED_NO_BUFFER> oled;
+Servo servo; 
 VB_BMP280 barometer; //барометр
 VB_MPU9250 imu; //акселерометр
 
@@ -23,12 +22,12 @@ const float DIODE_DROP = 0.2f;
 
 
 //пины
-const byte VoltagePin = A2;
-const byte SetPin = 7;
-const byte TestButtonPin = A3;
-const byte SD_CS_Pin = 4;
-const byte ServoPin = 9;
-const byte PhotoPin = A0;
+const byte VoltagePin = A2; //считывание напряжения
+const byte SetPin = 7; 
+const byte TestButtonPin = A3; 
+const byte SD_CS_Pin = 4; //sd карта
+const byte ServoPin = 9; // сервик
+const byte PhotoPin = A0; // фоторезистор
 
 //номер команды
 const char* TeamID = "39";
@@ -68,17 +67,9 @@ bool rescue_test = false;
 
 void setup() {
   Wire.begin(); //запуск I2C
-
-  oled.init();        // инициализация
-  oled.clear();       // очистка
-
-  oled.print("Starting");
-  
   Serial.begin(9600);
   Serial1.begin(9600);
   
-
-
   imu.begin();
   barometer.begin();
 
@@ -98,7 +89,6 @@ void setup() {
    
   sdOk = SD::begin(SD_CS_Pin);
   
-  oled.clear();
   updateDisplay();
 }
 
@@ -113,26 +103,6 @@ void rescueReset()
 {
   servo.write(0);
 }
-
-void updateDisplay()
-{
-  //oled.clear();
-  oled.setCursor(0,0);
-  oled.println("Ready!");
-  oled.print("Max A=");
-  oled.println(max_altitude);
-  oled.print("V=");
-  oled.println(voltage);
-  if(!sdOk){
-    oled.println("SD error!");
-  }
-
- 
-
-}
-
-
-
 
 void loop() {
   //опрос датчиков
@@ -165,7 +135,6 @@ void loop() {
   //дисплей будем обновлять пока ракета на земле
  if ((!startPoint || landPoint) && millis() - last_update >= update_period) {  // ищем разницу
     last_update = millis();                   // сброс таймера
-    updateDisplay();
   }
 
   //тестовое срабатывание
