@@ -5,15 +5,15 @@
 #include "VB_BMP280.h"
 #include "mString.h"
 #include "sdCard.h"
-#include "GyverOLED.h"
+
 
 #include <Servo.h>
 
 
 //подключенные устройства и датчики
-Servo servo; 
-VB_BMP280 barometer; //барометр
-VB_MPU9250 imu; //акселерометр
+Servo servo; //сервик
+VB_BMP280 barometer; //барометр (давление)
+VB_MPU9250 imu; //акселерометр (ускорение)
 
 //делитель напряжения
 const int V_R1 = 20000;
@@ -55,7 +55,7 @@ bool parachutePoint = false;
 bool landPoint = false;
 
 
-//раюочие переменные 
+//рабочие переменные 
 float voltage = 0;
 float max_altitude = 0;
 float start_altitude = 0;
@@ -68,7 +68,7 @@ bool rescue_test = false;
 void setup() {
   Wire.begin(); //запуск I2C
   Serial.begin(9600);
-  Serial1.begin(9600);
+  //Serial1.begin(9600);
   
   imu.begin();
   barometer.begin();
@@ -88,8 +88,6 @@ void setup() {
   servo.write(0);
    
   sdOk = SD::begin(SD_CS_Pin);
-  
-  updateDisplay();
 }
 
 
@@ -114,7 +112,7 @@ void loop() {
 
   float a = sqrt(imu.ax*imu.ax + imu.ay * imu.ay + imu.az * imu.az);// * G;
 
-  if(altitude > max_altitude)
+  if(altitude > max_altitude) //если текущая высота больше максимальной
   {
     max_altitude = altitude;
   }
@@ -191,7 +189,7 @@ void loop() {
 
   
   Serial.print(message.buf);
-  Serial1.print(message.buf);
+  //Serial1.print(message.buf);
   SD::print(message.buf);
 
   delay(20);
