@@ -1,23 +1,33 @@
 #include "function.h"
 
-int angleMove(int potentPIN){
-    int val = analogRead(potentPIN);
-    int angle = int(val/1024.0 * 270.0); 
-    angle = constrain(angle,0,180);
-    return angle;
-}
-
-void damageControl(int lives,int photoPIN, int currentTime, int startingTime){
-    int light = digitalRead(photoPIN);
-    if ( light >= 1000 && currentTime == 500 )  
-    lives -=1;
-    unsigned long presentTime = millis();
-    unsigned long  timepassed= presentTime - startingTime;
-
-}
-
-void lifeSystem(int lifePIN1,int lifePIN2,int lifePIN3, int lives)
+int angleMove(int potentPIN)
 {
+    int val = analogRead(potentPIN);
+    int angle = map(val, 0, 1024, 0, 180);
+    return angle;
+};
+
+void damageControl(int lives, int photoPIN, int currentTime, int startingTime)
+{
+    int light = digitalRead(photoPIN);
+    if (light >= 1000 && currentTime == 500)
+        lives -= 1;
+    unsigned long presentTime = millis();
+    unsigned long timepassed = presentTime - startingTime;
+}
+
+void lifeSystem(int N, int pins[], int lives)
+{
+    int *arr = new int[N];
+    for (int i = 0; i < N; i++)
+    {
+        arr[i] = i + 1 <= lives ? 1 : 0;
+    }
+    for (int i = 0; i < N; i++)
+    {
+        digitalWrite(pins[i], arr[i]);
+    }
+    /*
     if (lives == 3)
     {
     digitalWrite(lifePIN1,HIGH);
@@ -41,5 +51,5 @@ void lifeSystem(int lifePIN1,int lifePIN2,int lifePIN3, int lives)
     digitalWrite(lifePIN1,LOW);
     digitalWrite(lifePIN2,LOW);
     digitalWrite(lifePIN3,LOW);
-    }
+    }*/
 }

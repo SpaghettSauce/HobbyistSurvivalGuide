@@ -8,66 +8,55 @@
 #include "function.h"
 #include <Servo.h>
 
-#define lifeLight1 12
-#define lifeLight2 11
-#define lifeLight3 10
-#define dangerLight1 13
-#define dangerLight2 3
+#define LifeLight1 12
+#define LifeLight2 11
+#define LifeLight3 10
+
+#define DangerLight1 13
+#define DangerLight2 3
+
 #define PHS A0
-#define Buzzer 8 
+#define Buzzer 8
 #define POT A1
+#define MaxLives 3
 
 unsigned long startingTime;
 unsigned long duration = 3000;
-int lives = 3;
+int lives = MaxLives;
 
-Servo Servik; 
+int LifePins[] = {LifeLight1, LifeLight2, LifeLight3};
+Servo Servik;
 
-
-
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   startingTime = millis();
   Servik.attach(9);
 
-  pinMode(Buzzer,OUTPUT);
-  pinMode(dangerLight1,OUTPUT);
-  pinMode(dangerLight2,OUTPUT);
-  pinMode(lifeLight1,OUTPUT);                                   
-  pinMode(lifeLight2,OUTPUT);
-  pinMode(lifeLight3,OUTPUT);
-  pinMode(POT,INPUT);
+  pinMode(Buzzer, OUTPUT);
+  pinMode(DangerLight1, OUTPUT);
+  pinMode(DangerLight2, OUTPUT);
+  pinMode(LifeLight1, OUTPUT);
+  pinMode(LifeLight2, OUTPUT);
+  pinMode(LifeLight3, OUTPUT);
+  pinMode(POT, INPUT);
 }
 
-void loop() {
+void loop()
+{
   int light = analogRead(PHS);
   Servik.write(angleMove(POT));
-  Serial.println(light);
-  Serial.print("and now angle ");
-  Serial.print(angleMove(POT));
 
-  lifeSystem(lifeLight1,lifeLight2,lifeLight3,lives);
+  lifeSystem(MaxLives, LifePins, lives);
+  damageControl(lives, PHS, startingTime, duration);
 
-  if (angleMove(POT) >20){ //danger
-    digitalWrite(dangerLight1,HIGH);
-    digitalWrite(dangerLight2,HIGH);
+  if (angleMove(POT) > 20)
+  { // danger
+    digitalWrite(DangerLight1, HIGH);
+    digitalWrite(DangerLight2, HIGH);
     delay(300);
-    digitalWrite(dangerLight1,LOW);
-    digitalWrite(dangerLight2,LOW);
+    digitalWrite(DangerLight1, LOW);
+    digitalWrite(DangerLight2, LOW);
     delay(400);
   }
-
-  if (light >268)
-  {
-    lives -=1;
-    for (int i=0; i<5; i++)
-    {
-      digitalWrite(lifeLight1,HIGH);
-      delay(500);
-      digitalWrite(lifeLight1,LOW);
-      delay(500);
-    }
-    digitalWrite(lifeLight1,LOW);
-  }
-
 }
