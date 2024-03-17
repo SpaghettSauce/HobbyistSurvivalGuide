@@ -1,3 +1,3 @@
 Arduino штучки 
 
-•В папке multipleFiles, ардуино файлы находятся в папке src
+•В папке multipleFiles и ImperialVenzel, ардуино файлы находятся в папке src
