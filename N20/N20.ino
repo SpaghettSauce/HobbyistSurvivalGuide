@@ -8,10 +8,10 @@
 #define MotFwd  3  // Пин мотора движения по часовой стрелке
 #define MotRev  4 // Пин мотора движения против часовой стрелке
 
-int encoderPin1 = 2; //Encoder Output 'A' must connected with intreput pin of arduino.
-int encoderPin2 = 3; //Encoder Otput 'B' must connected with intreput pin of arduino.
-volatile int lastEncoded = 0; // Here updated value of encoder store.
-volatile long encoderValue = 0; // Raw encoder value
+int encoderPin1 = 2; //Первый пин энкодера
+int encoderPin2 = 3; //Второй пин энкодера
+volatile int lastEncoded = 0; //здесь будем хранить наши обновленные значения энкодера
+volatile long encoderValue = 0; // Здесь будут "сырые" значения энкодера
 
 
 void setup() {
