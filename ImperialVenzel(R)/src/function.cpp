@@ -22,7 +22,7 @@ void damageControl(int &lives, int PHS, int currentTime, int startingTime, int B
         if (millis() - time >= PERIOD) {  // ищем разницу
             time = millis();          
             lives -= 1;
-            //tone (BUZZER,900,200);
+            tone (BUZZER,900,200);
         }
     }
 }   

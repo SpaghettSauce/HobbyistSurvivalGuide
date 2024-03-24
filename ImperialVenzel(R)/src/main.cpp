@@ -52,4 +52,10 @@ void loop()
     damageControl(lives, PHS, startingTime, duration, Buzzer);
   }
   Serial.println("Whoopsy Daisy");
+  digitalWrite(LifeLight1,LOW);
+  for (int i=0; i<5; i++)
+  {
+    tone(Buzzer,900,200);
+    delay(150);
+  }
 }
