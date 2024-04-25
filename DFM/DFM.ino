@@ -67,21 +67,31 @@ digitalWrite(TRIG, LOW);
   duration = pulseIn(ECHO, HIGH);
 
   cm = (duration / 2) / 19.1;
+  delay(50);
   return cm;
 }
 
 void REC1(int width)
 {
+  
   display.fillRect(0, 0, width, 144, RED);
+  //display.fillRect(width, 0, 10, 144, RED);
+  //display.fillRect(width, 0, 10, 144, BLACK);
   display.fillScreen(BLACK);
 }
 void REC2(int width)
 {
+ 
   display2.fillRect(0, 0, width, 144, YELLOW);
-  display2.fillScreen(BLACK);
+   display2.fillScreen(BLACK);
+  //display2.fillRect(width, 0, 10, 144, YELLOW);
+  //display2.fillRect(width, 0, 10, 144, BLACK);
 }
 void REC3(int width)
 {
+  
   display3.fillRect(0, 0, width, 144, GREEN);
   display3.fillScreen(BLACK);
+  //display3.fillRect(width, 0, 10, 144, GREEN);
+  //display3.fillRect(width, 0, 10, 144, BLACK);
 }
