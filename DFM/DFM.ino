@@ -42,13 +42,13 @@ void setup() {
 void loop() 
 {
   cm = len(PIN_TRIG,PIN_ECHO);
-    REC1(cm * 5);
+    REC1(display,cm* 5, RED) ;
   if (cm > 20 )
   {
-    REC2(cm * 2 );
+    REC1(display2, cm * 2, YELLOW );
     if (cm >30)
     {
-      REC3(cm);
+      REC1(display3,cm,GREEN);
     }
   }
 
@@ -71,27 +71,10 @@ digitalWrite(TRIG, LOW);
   return cm;
 }
 
-void REC1(int width)
+void REC1(TFT_ILI9163C displac, int width, int colour )
 {
   
-  display.fillRect(0, 0, width, 144, RED);
-  //display.fillRect(width, 0, 10, 144, RED);
-  //display.fillRect(width, 0, 10, 144, BLACK);
-  display.fillScreen(BLACK);
-}
-void REC2(int width)
-{
- 
-  display2.fillRect(0, 0, width, 144, YELLOW);
-   display2.fillScreen(BLACK);
-  //display2.fillRect(width, 0, 10, 144, YELLOW);
-  //display2.fillRect(width, 0, 10, 144, BLACK);
-}
-void REC3(int width)
-{
-  
-  display3.fillRect(0, 0, width, 144, GREEN);
-  display3.fillScreen(BLACK);
-  //display3.fillRect(width, 0, 10, 144, GREEN);
-  //display3.fillRect(width, 0, 10, 144, BLACK);
+  displac.fillRect(0, 0, width, 144, colour);
+  display.fillRect(width, 0, 25, 144, BLACK);
+
 }
