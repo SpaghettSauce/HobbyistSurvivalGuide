@@ -42,6 +42,8 @@ void setup() {
 void loop() 
 {
   cm = len(PIN_TRIG,PIN_ECHO);
+  Serial.println(cm);
+
     REC1(display,cm* 5, RED) ;
   if (cm > 20 )
   {
