@@ -42,7 +42,7 @@ void loop()
       Serial.println("Moving forward");}
 
     else if (val == 's') 
-    {  // stop
+    { 
       analogWrite(motorR, -speed);
       analogWrite(motorL, -speed);
       Serial.println("Moving backward");
