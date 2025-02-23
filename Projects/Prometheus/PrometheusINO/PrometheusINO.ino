@@ -1,12 +1,16 @@
 #define mPAN 5
-#define mGOM 6
+
+#define mGOM1 8
+#define mGOM2 7
 
 #define sPAN A0
 #define sGOM A1
 void setup()
 {
     pinMode(mPAN,OUTPUT);
-    pinMode(mGOM,OUTPUT);
+    pinMode(mGOM1,OUTPUT);
+    pinMode(mGOM2,OUTPUT);
+
     Serial.begin(9600);     
 }
 
@@ -19,17 +23,23 @@ void loop()
 
     Serial.print("PAN:");
     Serial.println(vPAN);
-    Serial.print("GOM:");
-    Serial.println(vGOM);
+    //Serial.print("GOM:");
+    //Serial.println(vGOM);
 
-    if (vPAN <= 300){
+    //
+    //digitalWrite(mGOM1,LOW);
+    //digitalWrite(mGOM2,HIGH);
+
+    if (vPAN >= 300){
     digitalWrite(mPAN,HIGH);
     delay(1500);
     }
-    if (vGOM <= 300){
-    digitalWrite(mGOM,HIGH);
+    if (vGOM >= 300){
+    digitalWrite(mGOM1,HIGH);
     delay(1500);
-    delay(100);
+    }
+    else{
+      digitalWrite(mGOM1, LOW);
     }
 
 }
