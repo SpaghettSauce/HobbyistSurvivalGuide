@@ -32,11 +32,11 @@ void loop()
 
     if (vPAN >= 300){
     digitalWrite(mPAN,HIGH);
-    delay(1500);
+    delay(3000);
     }
     if (vGOM >= 300){
     digitalWrite(mGOM1,HIGH);
-    delay(1500);
+    delay(3000);
     }
     else{
       digitalWrite(mGOM1, LOW);
