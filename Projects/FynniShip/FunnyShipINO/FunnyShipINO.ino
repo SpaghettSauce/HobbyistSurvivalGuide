@@ -1,4 +1,3 @@
-
 #include <Octofet.h>
 #include <SPI.h>
 #include <Wire.h>
@@ -25,7 +24,8 @@
 #define valve6 6
 #define valve7 7
 
-constexpr auto pinCS = 6;
+constexpr auto pinCS1 = 6;
+constexpr auto pinCS2 = 7;
 L3G gyro;
 Octofet octofet(pinCS);
 

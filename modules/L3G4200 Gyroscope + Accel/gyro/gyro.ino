@@ -1,4 +1,4 @@
-1/*
+/*
     L3G4200D Triple Axis Gyroscope: Pitch, Roll and Yaw.
     Read more: http://www.jarzebski.pl/arduino/czujniki-i-sensory/3-osiowy-zyroskop-l3g4200d.html
     GIT: https://github.com/jarzebski/Arduino-L3G4200D
