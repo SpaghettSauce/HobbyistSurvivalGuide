@@ -12,14 +12,14 @@
 #define pump4_1 7
 #define pump4_2 6
 
-#define valve0 0
-#define valve1 1
-#define valve2 2
-#define valve3 3
-#define valve4 4
-#define valve5 5
-#define valve6 6
-#define valve7 7
+#define valve1 0
+#define valve2 1
+#define valve3 2
+#define valve4 3
+#define valve5 4
+#define valve6 5
+#define valve7 6
+#define valve8 7
 
 constexpr auto pinCS1 = 5;
 constexpr auto pinCS2 = 4;
@@ -48,19 +48,19 @@ void loop() {
   // К1 -> Н1 -> БЦ1 (10 СЕК) -> K5 -> Н3 -> БЦ3 -> AGAIN
  
 
-    octofet.digitalWrite(valve0,HIGH);
+    octofet.digitalWrite(valve1,HIGH);
     analogWrite(pump4_1, 255);
     analogWrite(pump4_2,0);
     delay(10000);
-    octofet.digitalWrite(valve0,LOW);
+    octofet.digitalWrite(valve1,LOW);
     analogWrite(pump4_1, 0);
     analogWrite(pump4_2, 0);
     delay(100);
-    octofet.digitalWrite(valve4,HIGH);
+    octofet.digitalWrite(valve5,HIGH);
     analogWrite(pump4_1, 0);
     analogWrite(pump4_2,255);
     delay(10000);
-  octofet.digitalWrite(valve4,LOW);
+  octofet.digitalWrite(valve5,LOW);
 
 
   delay(100);

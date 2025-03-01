@@ -15,14 +15,14 @@
 #define pump4_1 7
 #define pump4_2 6
 
-#define valve0 0
-#define valve1 1
-#define valve2 2
-#define valve3 3
-#define valve4 4
-#define valve5 5
-#define valve6 6
-#define valve7 7
+#define valve1 0
+#define valve2 1
+#define valve3 2
+#define valve4 3
+#define valve5 4
+#define valve6 5
+#define valve7 6
+#define valve8 7
 
 constexpr auto pinCS1 = 6;
 constexpr auto pinCS2 = 7;
@@ -63,7 +63,7 @@ void loop() {
 
   if (map((int)gyro.g.x,-80 , 40 , 0 , 10 ) >=  100)
   {
-    octofet.digitalWrite(valve0,HIGH);
+    octofet.digitalWrite(valve1,HIGH);
     analogWrite(pump1_1, 255);
     analogWrite(pump1_2,0);
     delay (500);
@@ -71,13 +71,13 @@ void loop() {
     analogWrite(pump1_1, 0);
     analogWrite(pump1_2,255);
     
-    octofet.digitalWrite(valve0,LOW);
-    octofet.digitalWrite(valve1,HIGH);
+    octofet.digitalWrite(valve1,LOW);
+    octofet.digitalWrite(valve2,HIGH);
   }
 
  if (map((int)gyro.g.x,-80 , 40 , 0 , 10 ) <=  100)
   {
-    octofet.digitalWrite(valve2,HIGH);
+    octofet.digitalWrite(valve3,HIGH);
     analogWrite(pump2_1, 255);
     analogWrite(pump2_2,0);
     delay (500);
@@ -85,12 +85,12 @@ void loop() {
     analogWrite(pump2_1, 0);
     analogWrite(pump2_2,255);
     
-    octofet.digitalWrite(valve2,LOW);
-    octofet.digitalWrite(valve3,HIGH);
+    octofet.digitalWrite(valve3,LOW);
+    octofet.digitalWrite(valve4,HIGH);
   }
    if (map((int)gyro.g.x,-80 , 40 , 0 , 10 ) >=  50)
   {
-    octofet.digitalWrite(valve4,HIGH);
+    octofet.digitalWrite(valve5,HIGH);
     analogWrite(pump3_1, 255);
     analogWrite(pump3_2,0);
     delay (500);
@@ -98,12 +98,12 @@ void loop() {
     analogWrite(pump3_1, 0);
     analogWrite(pump3_2,255);
     
-    octofet.digitalWrite(valve4,LOW);
-    octofet.digitalWrite(valve5,HIGH);
+    octofet.digitalWrite(valve5,LOW);
+    octofet.digitalWrite(valve6,HIGH);
   }
    if (map((int)gyro.g.x,-80 , 40 , 0 , 10 ) <=  50)
   {
-    octofet.digitalWrite(valve6,HIGH);
+    octofet.digitalWrite(valve7,HIGH);
     analogWrite(pump4_1, 255);
     analogWrite(pump4_2,0);
     delay (500);
@@ -111,8 +111,8 @@ void loop() {
     analogWrite(pump4_1, 0);
     analogWrite(pump4_2,255);
     
-    octofet.digitalWrite(valve6,LOW);
-    octofet.digitalWrite(valve7,HIGH);
+    octofet.digitalWrite(valve7,LOW);
+    octofet.digitalWrite(valve8,HIGH);
   }
 
   Serial.print("G ");
