@@ -58,6 +58,7 @@ void setup() {
 }
 
 void loop() {
+  
   gyro.read();
 
   if (map((int)gyro.g.x,-80 , 40 , 0 , 10 ) >=  100)
