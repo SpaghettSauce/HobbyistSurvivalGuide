@@ -1,7 +1,4 @@
 #include <Octofet.h>
-#include <SPI.h>
-#include <Wire.h>
-//#include <L3G.h>
 
 #define pump1_1 11
 #define pump1_2 10
@@ -26,14 +23,12 @@
 
 constexpr auto pinCS1 = 5;
 constexpr auto pinCS2 = 4;
-//L3G gyro;
+
 Octofet octofet(pinCS1);
-//Octofet octofet(pinCS2);
+
 
 void setup() {
   octofet.begin();
-
-  //pinMode(valve,OUTPUT);
 
   pinMode(pump1_1, OUTPUT);
   pinMode(pump1_2,OUTPUT);
@@ -48,13 +43,10 @@ void setup() {
   pinMode(pump4_2,OUTPUT);
   Serial.begin(9600);
 
-  //if (!gyro.init())//Проверка подключения гироскопа к ардуино 
-//  gyro.enableDefault();
-}
 
 void loop() {
-  
-  //gyro.read();
+  // К1 -> Н1 -> БЦ1 (10 СЕК) -> K5 -> Н3 -> БЦ3 -> AGAIN
+ 
 
     octofet.digitalWrite(valve0,HIGH);
     analogWrite(pump4_1, 255);
@@ -70,10 +62,7 @@ void loop() {
     delay(10000);
   octofet.digitalWrite(valve4,LOW);
 
-    /*octofet.digitalWrite(valve7,HIGH);
-    analogWrite(pump4_1, 255);
-    analogWrite(pump4_2, 0);
-*/
+
   delay(100);
   Serial.println("i'm done");
 }
