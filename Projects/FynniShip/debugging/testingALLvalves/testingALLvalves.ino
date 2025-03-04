@@ -27,7 +27,7 @@
 constexpr auto pinCS1 = 5;
 constexpr auto pinCS2 = 4;
 Octofet octofet(pinCS1);
-
+Octofet octofet1(pinCS2);
 void setup() {
   octofet.begin();
 
@@ -58,5 +58,15 @@ octofet.digitalWrite(valve5,HIGH);
 octofet.digitalWrite(valve6,HIGH);
 octofet.digitalWrite(valve7,HIGH);
 octofet.digitalWrite(valve8,HIGH);
+
+
+octofet1.digitalWrite(valve1,HIGH);
+octofet1.digitalWrite(valve2,HIGH);
+octofet1.digitalWrite(valve3,HIGH);
+octofet1.digitalWrite(valve4,HIGH);
+octofet1.digitalWrite(valve5,HIGH);
+octofet1.digitalWrite(valve6,HIGH);
+octofet1.digitalWrite(valve7,HIGH);
+octofet1.digitalWrite(valve8,HIGH);
 
 }
