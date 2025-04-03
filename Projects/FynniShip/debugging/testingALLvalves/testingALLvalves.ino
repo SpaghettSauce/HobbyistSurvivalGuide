@@ -6,14 +6,14 @@
 #define pump1_1 11
 #define pump1_2 10
 
-#define pump2_1 13
-#define pump2_2 12
+#define pump2_1 9
+#define pump2_2 8
 
-#define pump3_1 9 
-#define pump3_2 8
+#define pump3_1 7 
+#define pump3_2 6
 
-#define pump4_1 7
-#define pump4_2 6
+#define pump4_1 4
+#define pump4_2 3
 
 #define valve1 0
 #define valve2 1
@@ -25,9 +25,9 @@
 #define valve8 7
 
 constexpr auto pinCS1 = 5;
-constexpr auto pinCS2 = 4;
-Octofet octofet(pinCS1);
-Octofet octofet1(pinCS2);
+//constexpr auto pinCS2 = 12;
+constexpr auto deviceCount = 2;
+Octofet octofet(pinCS1,deviceCount);
 void setup() {
   octofet.begin();
 
