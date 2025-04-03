@@ -48,25 +48,28 @@ void setup() {
 }
 
 void loop() {
-  
+  // 0 -> 1 , 1 -> 0 , 2 -> 1 , 3 -> 1, 
+octofet.digitalWrite(0, HIGH, 0);
+octofet.digitalWrite(1, HIGH, 0);
+octofet.digitalWrite(2, HIGH, 1);
+octofet.digitalWrite(3, HIGH, 1);
+//octofet.digitalWrite(valve1,HIGH,1);
+//octofet.digitalWrite(valve2,HIGH,2);
+//octofet.digitalWrite(valve3,HIGH);
+//octofet.digitalWrite(valve4,HIGH);
+//octofet.digitalWrite(valve5,HIGH);
+//octofet.digitalWrite(valve6,HIGH);
+//octofet.digitalWrite(valve7,HIGH);
+//octofet.digitalWrite(valve8,HIGH);
 
-octofet.digitalWrite(valve1,HIGH);
-octofet.digitalWrite(valve2,HIGH);
-octofet.digitalWrite(valve3,HIGH);
-octofet.digitalWrite(valve4,HIGH);
-octofet.digitalWrite(valve5,HIGH);
-octofet.digitalWrite(valve6,HIGH);
-octofet.digitalWrite(valve7,HIGH);
-octofet.digitalWrite(valve8,HIGH);
 
-
-octofet1.digitalWrite(valve1,HIGH);
-octofet1.digitalWrite(valve2,HIGH);
-octofet1.digitalWrite(valve3,HIGH);
-octofet1.digitalWrite(valve4,HIGH);
-octofet1.digitalWrite(valve5,HIGH);
-octofet1.digitalWrite(valve6,HIGH);
-octofet1.digitalWrite(valve7,HIGH);
-octofet1.digitalWrite(valve8,HIGH);
+//octofet1.digitalWrite(valve1,HIGH);
+//octofet1.digitalWrite(valve2,HIGH);
+//octofet1.digitalWrite(valve3,HIGH);
+//octofet1.digitalWrite(valve4,HIGH);
+//octofet1.digitalWrite(valve5,HIGH);
+//octofet1.digitalWrite(valve6,HIGH);
+//octofet1.digitalWrite(valve7,HIGH);
+//octofet1.digitalWrite(valve8,HIGH);
 
 }
