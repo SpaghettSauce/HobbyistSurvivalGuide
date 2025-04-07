@@ -45,14 +45,21 @@ void setup() {
   pinMode(pump4_2,OUTPUT);
   Serial.begin(9600);
 
-}
+}         //1->2     2->1    3->4    4->3
 
 void loop() {
   // 0 -> 1 , 1 -> 0 , 2 -> 1 , 3 -> 1, 
 octofet.digitalWrite(0, HIGH, 0);
+digitalWrite(pump2_1, LOW);
+digitalWrite(pump2_2, HIGH);
+delay(1000);
+octofet.digitalWrite(0, LOW, 0);
 octofet.digitalWrite(1, HIGH, 0);
 octofet.digitalWrite(2, HIGH, 1);
 octofet.digitalWrite(3, HIGH, 1);
+      //LOW -> HIGH 1 И 2 
+
+delay(500);
 //octofet.digitalWrite(valve1,HIGH,1);
 //octofet.digitalWrite(valve2,HIGH,2);
 //octofet.digitalWrite(valve3,HIGH);
