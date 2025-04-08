@@ -21,16 +21,12 @@
 #define valve7 6
 #define valve8 7
 
-constexpr auto pinCS1 = 5;
-//constexpr auto pinCS2 = 4;
+constexpr auto pinCS = 5;
 
-Octofet octofet(pinCS1);
-//Octofet octofet1(pinCS2);
-
+Octofet octofet(pinCS);
 
 void setup() {
   octofet.begin();
- // octofet1.begin();
 
   pinMode(pump1_1, OUTPUT);
   pinMode(pump1_2,OUTPUT);
@@ -49,27 +45,26 @@ void setup() {
 void loop() {
 
  //Сними комментарий с части которую нужно очистить
-/*
-    octofet.digitalWrite(valve1,HIGH);
-    analogWrite(pump1_1, 0);
-    analogWrite(pump1_2,255);
-  */
+
+    octofet.digitalWrite(0,HIGH,0);
+    analogWrite(pump1_1, LOW);
+    analogWrite(pump1_2,HIGH);
+  
   /*
-    octofet.digitalWrite(valve2,HIGH);
-    analogWrite(pump2_1, 255);
-    analogWrite(pump2_2, 0); //выкачка
+    octofet.digitalWrite(1,HIGH,0);
+    analogWrite(pump2_1, LOW);
+    analogWrite(pump2_2,HIGH);
 */
 /*
-    octofet.digitalWrite(valve3,HIGH);
-    analogWrite(pump3_1, 0);
-    analogWrite(pump3_2,255);
+    octofet.digitalWrite(2,HIGH,0);
+    analogWrite(pump3_1, LOW);
+    analogWrite(pump3_2,HIGH);
 */  
-  
-    octofet.digitalWrite(valve4,HIGH);
-    analogWrite(pump4_1, 255);
-    analogWrite(pump4_2, 0);
-
+  /*
+    octofet.digitalWrite(3,HIGH,0);
+    analogWrite(pump4_1, LOW);
+    analogWrite(pump4_2,HIGH);
+*/
     
-  delay(100);
   Serial.println("i'm done");
 }
