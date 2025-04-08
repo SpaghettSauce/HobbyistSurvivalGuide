@@ -22,14 +22,6 @@
 #define pump4_1 4
 #define pump4_2 3
 
-#define valve1 0
-#define valve2 1
-#define valve3 2
-#define valve4 3
-#define valve5 4
-#define valve6 5
-#define valve7 6
-#define valve8 7
 float const alpha = 0.9;   //Параметр фильтра
 constexpr auto pinCS = 5; //Пин октофета
 constexpr auto deviceCount = 2;
@@ -181,16 +173,16 @@ void loop()
     // Управление балластами для крена
     if (rollController.output) {
       if (roll > 2) { // Крен вправо → заполняем левый борт
-        octofet.digitalWrite(0, HIGH, 0);
-        octofet.digitalWrite(1, HIGH, 0);
+        octofet.digitalWrite(4, HIGH, 0);
+        octofet.digitalWrite(5, HIGH, 1);
         digitalWrite(pump2_1, HIGH);
         digitalWrite(pump2_2, LOW);
-        //digitalWrite(pump4_1, HIGH);
-        //digitalWrite(pump4_2, LOW);
-        delay(500);
+        digitalWrite(pump1_1, HIGH);
+        digitalWrite(pump1_2, LOW);
+       // delay(500);
       } else 
       { // Крен влево → заполняем правый борт
-        Serial.println("IMDONE");
+        //Serial.println("IMDONE");
        /* digitalWrite(FRONT_LEFT, LOW);
         digitalWrite(REAR_LEFT, LOW);
         digitalWrite(FRONT_RIGHT, HIGH);
@@ -198,8 +190,14 @@ void loop()
       }
       
     } else { // Если регулировка не требуется, выключаем все
-  
-      /*digitalWrite(pump1_1, LOW);
+      digitalWrite(pump2_1, LOW);
+      digitalWrite(pump2_2, LOW);
+      digitalWrite(pump1_1, LOW);
+      digitalWrite(pump1_2, LOW);
+      octofet.digitalWrite(4, LOW, 0);
+      octofet.digitalWrite(5, LOW, 1);
+  /*
+      digitalWrite(pump1_1, LOW);
       digitalWrite(pump1_2, LOW);
       digitalWrite(pump2_1, LOW);
       digitalWrite(pump2_2, LOW);
