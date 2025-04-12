@@ -177,16 +177,19 @@ void loop()
         octofet.digitalWrite(5, HIGH, 1);
         digitalWrite(pump2_1, HIGH);
         digitalWrite(pump2_2, LOW);
+
         digitalWrite(pump1_1, HIGH);
         digitalWrite(pump1_2, LOW);
        // delay(500);
       } else 
       { // Крен влево → заполняем правый борт
         //Serial.println("IMDONE");
-       /* digitalWrite(FRONT_LEFT, LOW);
-        digitalWrite(REAR_LEFT, LOW);
-        digitalWrite(FRONT_RIGHT, HIGH);
-        digitalWrite(REAR_RIGHT, HIGH);*/
+       digitalWrite(pump2_1, LOW);
+      digitalWrite(pump2_2, LOW);
+      digitalWrite(pump1_1, LOW);
+      digitalWrite(pump1_2, LOW);
+      octofet.digitalWrite(4, LOW, 0);
+      octofet.digitalWrite(5, LOW, 1);
       }
       
     } else { // Если регулировка не требуется, выключаем все

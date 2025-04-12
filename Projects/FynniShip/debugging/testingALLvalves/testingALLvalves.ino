@@ -50,33 +50,16 @@ void setup() {
 void loop() {
   // 0 -> 1 , 1 -> 0 , 2 -> 1 , 3 -> 1, 
 octofet.digitalWrite(0, HIGH, 0);
-digitalWrite(pump2_1, LOW);
-digitalWrite(pump2_2, HIGH);
-delay(1000);
-octofet.digitalWrite(0, LOW, 0);
 octofet.digitalWrite(1, HIGH, 0);
 octofet.digitalWrite(2, HIGH, 1);
 octofet.digitalWrite(3, HIGH, 1);
-      //LOW -> HIGH 1 И 2 
-
+      //LOW -> HIGH 1 И 2 В закомментированных octofet.digitalWrite(0, HIGH, 0); поменять последнее ЧИСЛО!!!!
+//octofet.digitalWrite(4, HIGH, 0);
+//octofet.digitalWrite(5, HIGH, 0);
+//octofet.digitalWrite(6, HIGH, 1);
+//octofet.digitalWrite(7, HIGH, 1);
 delay(500);
-//octofet.digitalWrite(valve1,HIGH,1);
-//octofet.digitalWrite(valve2,HIGH,2);
-//octofet.digitalWrite(valve3,HIGH);
-//octofet.digitalWrite(valve4,HIGH);
-//octofet.digitalWrite(valve5,HIGH);
-//octofet.digitalWrite(valve6,HIGH);
-//octofet.digitalWrite(valve7,HIGH);
-//octofet.digitalWrite(valve8,HIGH);
 
 
-//octofet1.digitalWrite(valve1,HIGH);
-//octofet1.digitalWrite(valve2,HIGH);
-//octofet1.digitalWrite(valve3,HIGH);
-//octofet1.digitalWrite(valve4,HIGH);
-//octofet1.digitalWrite(valve5,HIGH);
-//octofet1.digitalWrite(valve6,HIGH);
-//octofet1.digitalWrite(valve7,HIGH);
-//octofet1.digitalWrite(valve8,HIGH);
 
 }
