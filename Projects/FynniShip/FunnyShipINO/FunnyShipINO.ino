@@ -96,7 +96,7 @@ void setup()
     delay(250);
   }
 
-  setOffsets(); // Загрузим калибровочные пааметры
+  setOffsets(); // Загрузим калибровочные пааметры 
 
   // !ВНИМАНИЕ!
   // Значения ниже подобраны наугад - проверить с кораблём и поменять в случае чего
@@ -167,38 +167,36 @@ void loop()
   rollController.input = roll;
   // TODO: pitchController.input = pitch;
 
-  rollController.compute(); // очевидно
-  // TODO: pitchController.compute(); 
-
-    // Управление балластами для крена
+  rollController.compute(); 
+    // Управление балластами для кренаH
     if (rollController.output) {
-      if (roll > 2) { // Крен вправо → заполняем левый борт
-        octofet.digitalWrite(4, HIGH, 0);
-        octofet.digitalWrite(5, HIGH, 1);
+      if (roll > 1) { // Крен вправо → заполняем левый борт
+       octofet.digitalWrite(4, HIGH, 0);
+       octofet.digitalWrite(5, HIGH, 1);
+
+        digitalWrite(pump1_1, LOW);
+        digitalWrite(pump1_2, HIGH);
         digitalWrite(pump2_1, HIGH);
         digitalWrite(pump2_2, LOW);
 
-        digitalWrite(pump1_1, HIGH);
-        digitalWrite(pump1_2, LOW);
-       // delay(500);
+        
       } else 
       { // Крен влево → заполняем правый борт
         //Serial.println("IMDONE");
-       digitalWrite(pump2_1, LOW);
+      
+      digitalWrite(pump2_1, LOW);
       digitalWrite(pump2_2, LOW);
-      digitalWrite(pump1_1, LOW);
-      digitalWrite(pump1_2, LOW);
       octofet.digitalWrite(4, LOW, 0);
       octofet.digitalWrite(5, LOW, 1);
       }
       
     } else { // Если регулировка не требуется, выключаем все
-      digitalWrite(pump2_1, LOW);
-      digitalWrite(pump2_2, LOW);
-      digitalWrite(pump1_1, LOW);
-      digitalWrite(pump1_2, LOW);
-      octofet.digitalWrite(4, LOW, 0);
-      octofet.digitalWrite(5, LOW, 1);
+      // digitalWrite(pump2_1, LOW);
+      // digitalWrite(pump2_2, LOW);
+      // digitalWrite(pump1_1, LOW);
+      // digitalWrite(pump1_2, LOW);
+      // octofet.digitalWrite(4, LOW, 0);
+      // octofet.digitalWrite(5, LOW, 1);
   /*
       digitalWrite(pump1_1, LOW);
       digitalWrite(pump1_2, LOW);
