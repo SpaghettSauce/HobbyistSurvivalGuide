@@ -19,13 +19,14 @@
 //        RemoteXY include library          //
 //////////////////////////////////////////////
 
-// можете включить вывод отладочной информации в Serial на 115200
 //#define REMOTEXY__DEBUGLOG    
 
-// определение режима соединения и подключение библиотеки RemoteXY 
 #define REMOTEXY_MODE__WIFI_POINT
 
 #include <ESP8266WiFi.h>
+#include <RemoteXY.h>
+#include <Servo.h>  // Подключаем библиотеку Servo
+
 
 // настройки соединения 
 #define REMOTEXY_WIFI_SSID "IMboat"
@@ -33,8 +34,6 @@
 #define REMOTEXY_SERVER_PORT 6377
 #define REMOTEXY_ACCESS_PASSWORD "12345678"
 
-
-#include <RemoteXY.h>
 
 // конфигурация интерфейса RemoteXY  
 #pragma pack(push, 1)  
@@ -45,10 +44,9 @@ uint8_t RemoteXY_CONF[] =   // 52 bytes
   
 // структура определяет все переменные и события вашего интерфейса управления 
 struct {
-
     // input variables
-  int8_t slider_ver; // oт 0 до 100
-  int8_t slider_gor; // oт 0 до 100
+  int8_t slider_ver; // oт 0 до 100 (скорость мотора)
+  int8_t slider_gor; // oт 0 до 100 (руль)
 
     // other variable
   uint8_t connect_flag;  // =1 if wire connected, else =0
@@ -60,25 +58,32 @@ struct {
 //           END RemoteXY include          //
 /////////////////////////////////////////////
 
+// === Добавляем объекты для работы с сервой и мотором ===
+Servo steeringServo;
 
+const int motorPinPWM = D1; // ШИМ-пин для управления скоростью мотора
+const int servoPin      = D2; // Пин для серводвигателя
 
 void setup() 
 {
   RemoteXY_Init (); 
-  
-  
-  // TODO you setup code
-  
+
+  // Инициализация пина мотора
+  pinMode(motorPinPWM, OUTPUT);
+
+  // Прикрепляем серву к пину
+  steeringServo.attach(servoPin);
 }
 
 void loop() 
 { 
   RemoteXY_Handler ();
-  
-  
-  // TODO you loop code
-  // используйте структуру RemoteXY для передачи данных
-  // не используйте функцию delay(), вместо нее используйте RemoteXY_delay() 
 
+  // Управление мотором: преобразование 0–100% в 0–255
+  int motorSpeed = map(RemoteXY.slider_ver, 0, 100, 0, 255);
+  analogWrite(motorPinPWM, motorSpeed);
 
+  // Управление сервой: преобразуем 0–100 в угол от 0 до 180 градусов
+  int angle = map(RemoteXY.slider_gor, 0, 100, 0, 180);
+  steeringServo.write(angle);
 }
