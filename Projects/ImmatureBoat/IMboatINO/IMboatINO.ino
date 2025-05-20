@@ -19,7 +19,7 @@
 //        RemoteXY include library          //
 //////////////////////////////////////////////
 
-//#define REMOTEXY__DEBUGLOG    
+#define REMOTEXY__DEBUGLOG    
 
 #define REMOTEXY_MODE__WIFI_POINT
 
@@ -61,18 +61,21 @@ struct {
 // === Добавляем объекты для работы с сервой и мотором ===
 Servo steeringServo;
 
-const int motorPinPWM = D1; // ШИМ-пин для управления скоростью мотора
-const int servoPin      = D2; // Пин для серводвигателя
+const int motorPinPWM1 = D1;
+const int motorPinPWM2 = D3; // ШИМ-пины для управления скоростью мотора
+const int servoPin = D2; // Пин для серводвигателя
 
 void setup() 
 {
   RemoteXY_Init (); 
 
   // Инициализация пина мотора
-  pinMode(motorPinPWM, OUTPUT);
+  pinMode(motorPinPWM1, OUTPUT);
+  //pinMode(motorPinPWM2, OUTPUT);
 
   // Прикрепляем серву к пину
   steeringServo.attach(servoPin);
+  Serial.begin(115200);
 }
 
 void loop() 
@@ -81,9 +84,11 @@ void loop()
 
   // Управление мотором: преобразование 0–100% в 0–255
   int motorSpeed = map(RemoteXY.slider_ver, 0, 100, 0, 255);
-  analogWrite(motorPinPWM, motorSpeed);
+  analogWrite(motorPinPWM1, motorSpeed);
+  //analogWrite(motorPinPWM2, 0);
 
   // Управление сервой: преобразуем 0–100 в угол от 0 до 180 градусов
   int angle = map(RemoteXY.slider_gor, 0, 100, 0, 180);
+  Serial.println(angle);
   steeringServo.write(angle);
 }
