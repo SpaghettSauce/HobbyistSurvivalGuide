@@ -116,6 +116,4 @@ void loop()
   steeringServo.write(angle);
 
  }
- slider_ver = 0;
- slider_gor = 0;
 }
