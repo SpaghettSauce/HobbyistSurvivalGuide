@@ -74,7 +74,7 @@ void setup()
   //pinMode(motorPinPWM2, OUTPUT);
 
   // Прикрепляем серву к пину
-  steeringServo.attach(servoPin);
+  steeringServo.attach(servoPin,360,2400);
   Serial.begin(115200);
 }
 
