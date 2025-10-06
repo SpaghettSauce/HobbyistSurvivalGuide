@@ -1,4 +1,4 @@
-FFFFFFFFF45/*1.Шлюз
+/*1.Шлюз
   2.Danger light
   3.Damage control
   3.1 life system + reaction
@@ -58,4 +58,5 @@ void loop()
     tone(Buzzer,900,200);
     delay(150);
   }
+
 }
